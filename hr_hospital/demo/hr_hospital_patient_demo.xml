@@ -1,0 +1,27 @@
+<odoo>
+    <record id="hr_hospital_patient_1" model="hr.hospital.patient">
+        <field name="name">J.D. Salinger</field>
+        <field name="description">VIP</field>
+    </record>
+
+    <record id="hr_hospital_patient_2" model="hr.hospital.patient">
+        <field name="name">F. Scott Fitzgerald</field>
+        <field name="description">VIP</field>
+    </record>
+
+    <record id="hr_hospital_patient_3" model="hr.hospital.patient">
+        <field name="name">J.R.R. Tolkien</field>
+        <field name="description">VIP</field>
+    </record>
+
+    <record id="hr_hospital_patient_4" model="hr.hospital.patient">
+        <field name="name">Jane Austen</field>
+        <field name="description">VIP</field>
+    </record>
+
+    <record id="hr_hospital_patient_5" model="hr.hospital.patient">
+        <field name="name">Anne Frank</field>
+        <field name="description">VIP</field>
+    </record>
+
+</odoo>

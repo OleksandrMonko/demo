@@ -1,0 +1,18 @@
+<odoo>
+
+    <record id="hr_hospital_doctor_1" model="hr.hospital.doctor">
+        <field name="name">Harper Lee</field>
+        <field name="description">therapist</field>
+    </record>
+
+    <record id="hr_hospital_doctor_2" model="hr.hospital.doctor">
+        <field name="name">George Orwell</field>
+        <field name="description">therapist</field>
+    </record>
+
+    <record id="hr_hospital_doctor_3" model="hr.hospital.doctor">
+        <field name="name">J.K. Rowling</field>
+        <field name="description">dentist</field>
+    </record>
+
+</odoo>
