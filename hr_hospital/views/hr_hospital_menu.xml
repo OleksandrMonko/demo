@@ -12,7 +12,4 @@
             parent="hr_hospital_main_menu"
             name="Patients" sequence="110"/>
 
-  <menuitem id="hr_hospital_menu_main_settings"
-            parent="hr_hospital_main_menu"
-            name="Settings" sequence="900"/>
 </odoo>
