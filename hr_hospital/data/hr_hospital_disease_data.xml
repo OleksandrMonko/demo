@@ -1,0 +1,18 @@
+<odoo>
+
+    <record id="hr_hospital_disease_1" model="hr.hospital.disease">
+        <field name="name">flu</field>
+        <field name="description">flu</field>
+    </record>
+
+    <record id="hr_hospital_disease_2" model="hr.hospital.disease">
+        <field name="name">migraine</field>
+        <field name="description">migraine</field>
+    </record>
+
+    <record id="hr_hospital_disease_3" model="hr.hospital.disease">
+        <field name="name">respiratory disease</field>
+        <field name="description">respiratory disease</field>
+    </record>
+
+</odoo>
