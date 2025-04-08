@@ -1,6 +1,8 @@
 import logging
 
-from odoo import models, fields
+from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+from odoo.tools.translate import _
 
 _logger = logging.getLogger(__name__)
 
@@ -9,17 +11,39 @@ class HRHVisit(models.Model):
     _name = 'hr.hospital.visit'
     _description = 'Visit'
 
-    name = fields.Char(srting='Visit')
+    status = fields.Selection([
+        ('planned', 'Planned'),
+        ('done', 'Done'),
+        ('cancelled', 'Cancelled')
+    ], default='planned')
 
-    description = fields.Text()
-    date = fields.Datetime()
+    planned_datetime = fields.Datetime(string='Planned Date')
+    actual_datetime = fields.Datetime(string='Actual Visit Date')
+    doctor_id = fields.Many2one('hr.hospital.doctor', string='Doctor',
+                                required=True)
+    patient_id = fields.Many2one('hr.hospital.patient', string='Patient',
+                                 required=True)
+    diagnosis_ids = fields.One2many('hr.hospital.diagnosis', 'visit_id',
+                                    string='Diagnoses')
 
-    patient_id = fields.Many2one(
-        comodel_name='hr.hospital.patient', string='papient', required=True)
+    @api.constrains('doctor_id', 'patient_id', 'planned_datetime')
+    def _check_unique_visit(self):
+        for record in self:
+            if record.planned_datetime:
+                existing = self.search([
+                    ('id', '!=', record.id),
+                    ('doctor_id', '=', record.doctor_id.id),
+                    ('patient_id', '=', record.patient_id.id),
+                    ('planned_datetime', '=', record.planned_datetime.date())
+                ])
+                if existing:
+                    raise ValidationError(
+                        _("Patient already has a visit with this doctor "
+                          "on the same day."))
 
-    doctor_id = fields.Many2one(
-        comodel_name='hr.hospital.doctor', string='doctor', required=True)
-
-    disease_id = fields.Many2one(
-        comodel_name='hr.hospital.disease',
-        string='disease', required=True)
+    def unlink(self):
+        for record in self:
+            if record.diagnosis_ids:
+                raise ValidationError(
+                    _("You cannot delete a visit with diagnoses."))
+        return super().unlink()

@@ -1,18 +1,49 @@
 <odoo>
 
     <record id="hr_hospital_doctor_1" model="hr.hospital.doctor">
-        <field name="name">Harper Lee</field>
-        <field name="description">therapist</field>
+        <field name="first_name">John</field>
+        <field name="last_name">Doe</field>
+        <field name="phone">+380931111111</field>
+        <field name="gender">male</field>
+        <field name="specialty_id" ref="hr_hospital_specialty_1"/>
+        <field name="is_intern">False</field>
     </record>
 
     <record id="hr_hospital_doctor_2" model="hr.hospital.doctor">
-        <field name="name">George Orwell</field>
-        <field name="description">therapist</field>
+        <field name="first_name">Anna</field>
+        <field name="last_name">Smith</field>
+        <field name="phone">+380932222222</field>
+        <field name="gender">female</field>
+        <field name="specialty_id" ref="hr_hospital_specialty_2"/>
+        <field name="is_intern">True</field>
+        <field name="mentor_id" ref="hr_hospital_doctor_1"/>
     </record>
 
     <record id="hr_hospital_doctor_3" model="hr.hospital.doctor">
-        <field name="name">J.K. Rowling</field>
-        <field name="description">dentist</field>
+        <field name="first_name">Ivan</field>
+        <field name="last_name">Petrov</field>
+        <field name="phone">+380933333333</field>
+        <field name="gender">male</field>
+        <field name="specialty_id" ref="hr_hospital_specialty_1"/>
+        <field name="is_intern">False</field>
+    </record>
+
+    <record id="hr_hospital_doctor_4" model="hr.hospital.doctor">
+        <field name="first_name">Maria</field>
+        <field name="last_name">Ivanova</field>
+        <field name="phone">+380934444444</field>
+        <field name="gender">female</field>
+        <field name="specialty_id" ref="hr_hospital_specialty_2"/>
+        <field name="is_intern">False</field>
+    </record>
+
+    <record id="hr_hospital_doctor_5" model="hr.hospital.doctor">
+        <field name="first_name">Dmitry</field>
+        <field name="last_name">Orlov</field>
+        <field name="phone">+380935555555</field>
+        <field name="gender">male</field>
+        <field name="specialty_id" ref="hr_hospital_specialty_1"/>
+        <field name="is_intern">False</field>
     </record>
 
 </odoo>

@@ -25,6 +25,8 @@
     'demo': [
         'demo/hr_hospital_doctor_demo.xml',
         'demo/hr_hospital_patient_demo.xml',
+        'demo/hr_hospital_specialties_demo.xml',
+        'wizard/hr_hospital_set_personal_doctor_wizard_view.xml',
     ],
 
     'installable': True,
