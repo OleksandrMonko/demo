@@ -8,4 +8,16 @@
         <field name="name">Surgeon</field>
     </record>
 
+    <record id="hr_hospital_specialty_3" model="hr.hospital.specialty">
+        <field name="name">Emergency medicine</field>
+    </record>
+
+    <record id="hr_hospital_specialty_4" model="hr.hospital.specialty">
+        <field name="name">Gastroenterology</field>
+    </record>
+
+    <record id="hr_hospital_specialty_4" model="hr.hospital.specialty">
+        <field name="name">Cardiology</field>
+    </record>
+
 </odoo>

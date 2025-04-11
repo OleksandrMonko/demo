@@ -17,7 +17,7 @@ class SetPersonalDoctorWizard(models.TransientModel):
 
     def default_get(self, fields_list):
         res = super().default_get(fields_list)
-        res['patient_ids'] = [(6, 0, self.env.context.get('active_ids'))]
+        res['patient_ids'] = [(6, 0, self.env.context.get('active_ids', []))]
         return res
 
     def action_set_doctor(self):

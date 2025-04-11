@@ -4,28 +4,40 @@
         <field name="name">Respiratory</field>
     </record>
 
-    <record id="hr_hospital_disease_2" model="hr.hospital.disease">
+     <record id="hr_hospital_disease_11" model="hr.hospital.disease">
         <field name="name">Asthma</field>
         <field name="parent_id" ref="hr_hospital_disease_1"/>
     </record>
 
-    <record id="dhr_hospital_disease_3" model="hr.hospital.disease">
+    <record id="dhr_hospital_disease_12" model="hr.hospital.disease">
         <field name="name">Bronchitis</field>
         <field name="parent_id" ref="hr_hospital_disease_1"/>
     </record>
 
+    <record id="hr_hospital_disease_2" model="hr.hospital.disease">
+        <field name="name">Infectious Diseases</field>
+    </record>
+
+    <record id="hr_hospital_disease_3" model="hr.hospital.disease">
+        <field name="name">Heart Disease</field>
+    </record>
+
     <record id="hr_hospital_disease_4" model="hr.hospital.disease">
-        <field name="name">Cardiology</field>
+        <field name="name">Diabetes</field>
     </record>
 
     <record id="hr_hospital_disease_5" model="hr.hospital.disease">
-        <field name="name">Arrhythmia</field>
-        <field name="parent_id" ref="hr_hospital_disease_4"/>
+        <field name="name">Cardiology</field>
     </record>
 
-    <record id="hr_hospital_disease_6" model="hr.hospital.disease">
+    <record id="hr_hospital_disease_51" model="hr.hospital.disease">
+        <field name="name">Arrhythmia</field>
+        <field name="parent_id" ref="hr_hospital_disease_5"/>
+    </record>
+
+    <record id="hr_hospital_disease_52" model="hr.hospital.disease">
         <field name="name">Heart Failure</field>
-        <field name="parent_id" ref="hr_hospital_disease_4"/>
+        <field name="parent_id" ref="hr_hospital_disease_5"/>
     </record>
 
 </odoo>

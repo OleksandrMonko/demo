@@ -1,15 +1,8 @@
 <odoo>
 
-  <menuitem id="hr_hospital_main_menu"
-            web_icon="hr_hospital,static/description/icon.png"
-            name="HR Hospital" sequence="300"/>
-
-  <menuitem id="hr_hospital_menu_doctors"
-            parent="hr_hospital_main_menu"
-            name="Doctors" sequence="100"/>
-
-  <menuitem id="hr_hospital_menu_patients"
-            parent="hr_hospital_main_menu"
-            name="Patients" sequence="110"/>
+    <menuitem id="hr_hospital_main_menu"
+              web_icon="hr_hospital,static/description/icon.png"
+              name="HR Hospital"
+              sequence="10"/>
 
 </odoo>

@@ -4,10 +4,24 @@
         <field name="name">hr.hospital.patient.tree ()</field>
         <field name="model">hr.hospital.patient</field>
         <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-                <field name="description"/>
-            </tree>
+            <form>
+                <header>
+                    <button name="%(hr_hospital.hr_hospital_set_personal_doctor_wizard_act_window)d"
+                            string="Set personal doctor" type="action"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <tree>
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="personal_doctor_id"/>
+                            </tree>
+                        </group>
+                    </group>
+                </sheet>
+
+            </form>
         </field>
     </record>
 
@@ -16,12 +30,22 @@
         <field name="model">hr.hospital.patient</field>
         <field name="arch" type="xml">
             <form>
-                <header></header>
+                <header>
+                    <button name="%(hr_hospital.hr_hospital_set_personal_doctor_wizard_act_window)d"
+                            string="Set personal doctor" type="action"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="description"/>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="gender"/>
+                            <field name="birthday"/>
+                            <field name="age" readonly="1"/>
+                            <field name="passport_id"/>
+                            <field name="phone"/>
+                            <field name="contact_person"/>
+                            <field name="personal_doctor_id"/>
                         </group>
                     </group>
                 </sheet>
@@ -39,7 +63,7 @@
 
     <menuitem id="hr_hospital_menu_patient"
               action="action_hr_hospital_patient_window"
-              parent="hr_hospital_menu_patients"
+              parent="hr_hospital_main_menu"
               name="Patient" sequence="200"/>
 
 </odoo>

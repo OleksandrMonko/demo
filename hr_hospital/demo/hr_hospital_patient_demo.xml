@@ -5,7 +5,7 @@
         <field name="last_name">Kovalenko</field>
         <field name="phone">+380936111111</field>
         <field name="gender">male</field>
-        <field name="doctor_id" ref="hr_hospital_doctor_1"/>
+        <field name="personal_doctor_id" ref="hr_hospital_doctor_1"/>
         <field name="birthday">1990-01-01</field>
         <field name="passport_id">AB123456</field>
         <field name="contact_person">Father</field>
@@ -16,7 +16,7 @@
         <field name="last_name">Bondarenko</field>
         <field name="phone">+380936222222</field>
         <field name="gender">female</field>
-        <field name="doctor_id" ref="hr_hospital_doctor_2"/>
+        <field name="personal_doctor_id" ref="hr_hospital_doctor_2"/>
         <field name="birthday">1985-06-15</field>
         <field name="passport_id">BC654321</field>
         <field name="contact_person">Mother</field>
@@ -27,7 +27,7 @@
         <field name="last_name">Shevchenko</field>
         <field name="phone">+380936333333</field>
         <field name="gender">male</field>
-        <field name="doctor_id" ref="hr_hospital_doctor_3"/>
+        <field name="personal_doctor_id" ref="hr_hospital_doctor_3"/>
         <field name="birthday">2000-03-21</field>
         <field name="passport_id">CD987654</field>
         <field name="contact_person">Brother</field>
@@ -38,7 +38,7 @@
         <field name="last_name">Melnyk</field>
         <field name="phone">+380936444444</field>
         <field name="gender">female</field>
-        <field name="doctor_id" ref="hr_hospital_doctor_4"/>
+        <field name="personal_doctor_id" ref="hr_hospital_doctor_4"/>
         <field name="birthday">1995-09-10</field>
         <field name="passport_id">DE112233</field>
         <field name="contact_person">Husband</field>
@@ -49,7 +49,7 @@
         <field name="last_name">Tkachenko</field>
         <field name="phone">+380936555555</field>
         <field name="gender">male</field>
-        <field name="doctor_id" ref="hr_hospital_doctor_5"/>
+        <field name="personal_doctor_id" ref="hr_hospital_doctor_5"/>
         <field name="birthday">1988-11-30</field>
         <field name="passport_id">EF445566</field>
         <field name="contact_person">Wife</field>
