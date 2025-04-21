@@ -36,3 +36,25 @@ class HRHPatient(models.Model):
                     age -= 1
 
             record.age = age
+
+    def action_open_visits(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Visit History',
+            'res_model': 'hr.hospital.visit',
+            'view_mode': 'tree,form',
+            'domain': [('patient_id', '=', self.id)],
+            'target': 'current',
+        }
+
+    def action_create_visit(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Create Visit',
+            'res_model': 'hr.hospital.visit',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_patient_id': self.id,
+            },
+        }

@@ -16,7 +16,7 @@
         <field name="name">Gastroenterology</field>
     </record>
 
-    <record id="hr_hospital_specialty_4" model="hr.hospital.specialty">
+    <record id="hr_hospital_specialty_5" model="hr.hospital.specialty">
         <field name="name">Cardiology</field>
     </record>
 

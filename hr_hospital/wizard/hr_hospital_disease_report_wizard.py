@@ -36,13 +36,14 @@ class DiseaseReportWizard(models.TransientModel):
                     _("The 'From Date' should be before /"
                       " or equal to the 'To Date'."))
 
-    def _get_report_base_filename(self):
-        self.ensure_one()
-        return 'Report - %s' % (self.date_from)
+    # def _get_report_base_filename(self):
+    #    self.ensure_one()
+    #    return 'Report - %s' % (self.date_from)
 
     def default_get(self, fields_list):
         res = super().default_get(fields_list)
-        res['doctor_ids'] = [(6, 0, self.env.context.get('active_ids'))]
+        active_ids = self.env.context.get('active_ids')
+        res['doctor_ids'] = [(6, 0, active_ids)]
         return res
 
     def get_disease_report(self):
@@ -62,7 +63,9 @@ class DiseaseReportWizard(models.TransientModel):
             'type': 'ir.actions.act_window',
             'name': 'Disease report',
             'res_model': 'hr.hospital.diagnosis',
-            'view_mode': 'tree,form',
+            'view_mode': 'list',
+            'view_type': 'form',
             'domain': domain,
-            'target': 'current',
+            'target': 'inline',
+            'context': {'group_by': 'disease_id'},
         }

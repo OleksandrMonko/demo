@@ -45,3 +45,10 @@ class Disease(models.Model):
     def name_create(self, name):
         record = self.create({'name': name})
         return record.id, record.display_name
+
+    # @api.depends_context('hierarchical_naming')
+    # def _compute_display_name(self):
+    #    if self.env.context.get('hierarchical_naming', True):
+    #        return super()._compute_display_name()
+    #    for record in self:
+    #        record.display_name = record.name

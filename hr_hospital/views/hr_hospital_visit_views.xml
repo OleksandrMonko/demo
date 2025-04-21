@@ -30,10 +30,59 @@
         </field>
     </record>
 
+    <record id="hr_hospital_visit_search" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.search (hr_hospital_visit)</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+            <search string="Filters">
+
+                <group expand="0" string="Group By">
+                    <filter string="Visit status" name="status" domain="[]" context="{'group_by':'status'}"/>
+                </group>
+
+                <searchpanel>
+                    <field name="status" string="Filter by status"
+                           icon="fa fa-dot-circle text-info" select="multi"
+                           enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_hospital_visit_calendar" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.calendar (hr_hospital_visit)
+        </field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <calendar string="Visit date" create="1" quick_create="0"
+                      mode="month" scales="day,week,month,year"
+                      create_name_field="planned_datetime" color="status"
+                      date_start="planned_datetime"
+                      event_open_popup="False">
+                <field name="doctor_id" avatar_field="avatar_128"/>
+                <field name="status" filters="1" invisible="1"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="hr_hospital_visit_pivot" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.calendar (hr_hospital_visit)</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="priority">50</field>
+        <field name="arch" type="xml">
+            <pivot string="Pivot Example" sample="1" disable_linking="1" display_quantity="1">
+                <field name="planned_datetime" interval="month" type="col"/>
+                <field name="doctor_id" type="row"/>
+                <field name="status" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
     <record id="action_hr_hospital_visit_window" model="ir.actions.act_window">
         <field name="name">Visits</field>
         <field name="res_model">hr.hospital.visit</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,calendar,pivot</field>
     </record>
 
     <menuitem id="hr_hospital_menu_visit"

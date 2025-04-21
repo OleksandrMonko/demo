@@ -1,0 +1,63 @@
+<odoo>
+
+    <record id="hr_hospital_diagnosis_1" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital_visit_1"/>
+        <field name="disease_id" ref="hr_hospital_disease_31"/>
+        <field name="description">high temperature</field>
+        <field name="is_approved">False</field>
+        <field name="diagnosis_date"
+               eval="(datetime.now() - timedelta(days=3))"/>
+        <field name="doctor_id" ref="hr_hospital_doctor_1"/>
+    </record>
+
+    <record id="hr_hospital_diagnosis_2" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital_visit_4"/>
+        <field name="disease_id" ref="hr_hospital_disease_32"/>
+        <field name="description">weakness</field>
+        <field name="is_approved">False</field>
+        <field name="diagnosis_date"
+               eval="(datetime.now() - timedelta(days=3))"/>
+        <field name="doctor_id" ref="hr_hospital_doctor_1"/>
+    </record>
+
+    <record id="hr_hospital_diagnosis_3" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital_visit_2"/>
+        <field name="disease_id" ref="hr_hospital_disease_11"/>
+        <field name="description">red skin on arms</field>
+        <field name="is_approved">True</field>
+        <field name="diagnosis_date"
+               eval="(datetime.now() - timedelta(days=3))"/>
+        <field name="doctor_id" ref="hr_hospital_doctor_2"/>
+    </record>
+
+    <record id="hr_hospital_diagnosis_4" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital_visit_3"/>
+        <field name="disease_id" ref="hr_hospital_disease_21"/>
+        <field name="description">headache</field>
+        <field name="is_approved">False</field>
+        <field name="diagnosis_date"
+               eval="(datetime.now() - timedelta(days=3))"/>
+        <field name="doctor_id" ref="hr_hospital_doctor_2"/>
+    </record>
+
+    <record id="hr_hospital_diagnosis_5" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital_visit_3"/>
+        <field name="disease_id" ref="hr_hospital_disease_21"/>
+        <field name="description">headache</field>
+        <field name="is_approved">False</field>
+        <!--<field name="diagnosis_date"
+               eval="(datetime.now() - timedelta(days=3))"/>-->
+        <field name="doctor_id" ref="hr_hospital_doctor_3"/>
+    </record>
+
+    <record id="hr_hospital_diagnosis_6" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital_visit_3"/>
+        <field name="disease_id" ref="hr_hospital_disease_21"/>
+        <field name="description">headache</field>
+        <field name="is_approved">False</field>
+        <!--<field name="diagnosis_date"
+               eval="(datetime.now() - timedelta(days=3))"/>-->
+        <field name="doctor_id" ref="hr_hospital_doctor_4"/>
+    </record>
+
+</odoo>

@@ -17,26 +17,140 @@
         <field name="model">hr.hospital.doctor</field>
         <field name="arch" type="xml">
             <form>
-                <header></header>
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" class="oe_inline"/>
+                        </h1>
+                    </div>
+                    <newline/>
                     <group>
                         <group>
                             <field name="first_name"/>
                             <field name="last_name"/>
-                            <field name="phone"/>
-                            <field name="gender"/>
-                            <field name="image_1920"/>
+                            <separator/>
                             <field name="specialty_id"/>
+                            <separator/>
                             <field name="is_intern"/>
                             <field name="mentor_id">
                                 <visible>
                                     <value eval="is_intern"/>
                                 </visible>
                             </field>
+                            <separator/>
+                            <field name="interns_ids" mode="kanban">
+                            </field>
                         </group>
+                        <group>
+                            <group>
+                                <field name="image_1920" widget="image"
+                                       style="max-height:90px;"/>
+                            </group>
+                            <group>
+                                <field name="gender" widget='radio'/>
+                                <separator/>
+                                <separator/>
+                                <field name="phone"/>
+                                <separator/>
+                                <field name="patients_ids" mode="kanban"/>
+                            </group>
+                        </group>
+
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="hr_hospital_doctor_search" model="ir.ui.view">
+        <field name="name">hr.hospital.doctor.search (hr_hospital_doctor)
+        </field>
+        <field name="model">hr.hospital.doctor</field>
+        <field name="arch" type="xml">
+            <search string="Filters">
+                <field name="name"/>
+                <group>
+                    <filter string="Mentors" name="status"
+                            domain="[('is_intern','=', False)]"/>
+                    <filter string="Interns" name="status"
+                            domain="[('is_intern','=', True)]"/>
+                </group>
+                <searchpanel>
+                    <field name="mentor_id" string="Filter by Mentors"
+                           icon="fa-users" select="multi"
+                           enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_hospital_doctor_kanban" model="ir.ui.view">
+        <field name="name">hr.hospital.doctor.kanban (hr_hospital_doctor)
+        </field>
+        <field name="model">hr.hospital.doctor</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="specialty_id">
+                <header>
+                </header>
+                <field name="specialty_id"/>
+                <field name="interns_ids"/>
+
+                <templates>
+                    <t t-name="kanban-menu">
+                        <t t-if="widget.editable">
+                            <a role="menuitem" type="edit"
+                               class="dropdown-item">Edit
+                            </a>
+                        </t>
+                        <t t-if="widget.deletable">
+                            <a role="menuitem" type="delete"
+                               class="dropdown-item">Delete
+                            </a>
+                        </t>
+                        <ul class="oe_kanban_colorpicker" data-field="color"/>
+                    </t>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_content">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                            <div>
+                                <p>
+                                    <strong>Specialty:</strong>
+                                    <field name="specialty_id"/>
+                                </p>
+                            </div>
+
+                            <t t-if="record.mentor_id.raw_value">
+                                <div>
+                                    <p>
+                                        <strong>Mentor:</strong>
+                                        <field name="mentor_id"
+                                               widget="many2one"/>
+                                    </p>
+                                </div>
+                                <div>
+                                    <strong>Intern:</strong>✅
+                                </div>
+                            </t>
+
+                            <t t-else="">
+                                <div>
+                                    <p>
+                                        <strong>Interns:</strong>
+                                        <field name="interns_ids"
+                                               widget="many2many_tags"
+                                               options="{'color_field': 'color'}"/>
+                                    </p>
+                                </div>
+                            </t>
+                            <button name="create_visit" string="Create visit"
+                                    type="object" class="oe_highlight"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 

@@ -29,15 +29,18 @@
         'wizard/hr_hospital_disease_report_wizard_view.xml',
     ],
 
+    'images': [
+        'static/description/icon.png',
+    ],
     'demo': [
         'demo/hr_hospital_specialties_demo.xml',
         'demo/hr_hospital_doctor_demo.xml',
         'demo/hr_hospital_patient_demo.xml',
+        'demo/hr_hospital_visits_demo.xml',
+        'demo/hr_hospital_diagnosis_demo.xml',
     ],
 
     'installable': True,
     'auto_install': False,
-    'images': [
-        'static/description/icon.png',
-    ],
+
 }

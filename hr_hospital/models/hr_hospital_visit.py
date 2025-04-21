@@ -17,13 +17,15 @@ class HRHVisit(models.Model):
         ('cancelled', 'Cancelled')
     ], default='planned')
 
-    planned_datetime = fields.Datetime(string='Planned Date')
-    actual_datetime = fields.Datetime(string='Actual Visit Date')
+    planned_datetime = fields.Datetime(default=fields.Date.today(),
+                                       required=True, string='Planned Date')
+    actual_datetime = fields.Datetime(default=fields.Date.today(),
+                                      string='Actual Visit Date')
     doctor_id = fields.Many2one('hr.hospital.doctor', string='Doctor',
                                 required=True)
     patient_id = fields.Many2one('hr.hospital.patient', string='Patient',
                                  required=True)
-    diagnosis_ids = fields.One2many('hr.hospital.diagnosis', 'visit_id',
+    diagnosis_ids = fields.One2many(comodel_name='hr.hospital.diagnosis', inverse_name='visit_id',
                                     string='Diagnoses')
 
     @api.constrains('doctor_id', 'patient_id', 'planned_datetime')
