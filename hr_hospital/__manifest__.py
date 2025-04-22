@@ -27,6 +27,7 @@
         'views/hr_hospital_specialty_views.xml',
         'views/hr_hospital_visit_views.xml',
         'wizard/hr_hospital_disease_report_wizard_view.xml',
+        'report/hr_hospital_doctor_report.xml',
     ],
 
     'images': [

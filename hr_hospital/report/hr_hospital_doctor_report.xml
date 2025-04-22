@@ -1,0 +1,140 @@
+<odoo>
+    <record id="hr_hospital_doctor_paper_format" model="report.paperformat">
+        <field name="name">A4 Doctor</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <!--<field name="page_height">0</field>
+        <field name="page_width">0</field>-->
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">15</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="hr_hospital_doctor_main_report" model="ir.actions.report">
+        <field name="name">Doctor's report</field>
+        <field name="model">hr.hospital.doctor</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">hr_hospital.hr_hospital_doctor_main_template</field>
+        <field name="report_file">hr_hospital.hr_hospital_doctor_main_template</field>
+        <field name="print_report_name">(object.name)</field>
+        <field name="attachment"/>
+        <field name="binding_model_id" ref="model_hr_hospital_doctor"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="hr_hospital.hr_hospital_doctor_paper_format"/>
+    </record>
+
+
+    <template id="hr_hospital_doctor_main_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="doctor">
+                    <strong>
+
+                    </strong>
+                    <div class="row">
+                        <div name="hh_doctor_main_block">
+                            <div>
+                                <h2>
+                                    <div t-field="doctor.first_name"/>
+                                    <div t-field="doctor.last_name"/>
+                                </h2>
+                                <span>
+                                    <strong>Specialty:</strong>
+                                    <span t-field="doctor.specialty_id"/>
+                                </span>
+                            </div>
+                        </div>
+                        <h1 style="font-size: 24px; margin-bottom: 20px; text-align: center;">
+                            Visit`s Information
+                        </h1>
+                        <table class="table table-condensed" border="2"
+                               cellspacing="2"
+                               style="font-size: 18px; margin-bottom: 50px; text-align: center; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Scheduled date</th>
+                                    <th>Patient</th>
+                                    <th>Visit status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="visits"
+                                   t-value="request.env['hr.hospital.visit'].search([('doctor_id', '=', doctor.id)], order='planned_datetime desc')"/>
+                                <tr t-foreach="visits" t-as="visit">
+                                    <td>
+                                        <span t-field="visit.planned_datetime"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="visit.patient_id.first_name"/>
+                                        <span t-field="visit.patient_id.last_name"/>
+                                    </td>
+                                    <td t-attf-style="color: {{ ('#FFD700' if visit.status == 'planned' else '#008000' if visit.status == 'completed' else '#ff0000' )}}">
+                                        <span t-field="visit.status"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h1 style="font-size: 24px; margin-bottom: 20px; text-align: center;">
+                            Patient`s Information
+                        </h1>
+                        <table class="table table-condensed" border="2"
+                               cellspacing="2"
+                               style="font-size: 18px; margin-bottom: 50px; text-align: center; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Patient</th>
+                                    <th>Gender</th>
+                                    <th>Birth date</th>
+                                    <th>Phone number</th>
+                                    <th>Status last visit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="patients"
+                                   t-value="request.env['hr.hospital.patient'].search([('personal_doctor_id', '=', doctor.id)])"/>
+                                <tr t-foreach="patients" t-as="patient">
+                                    <td>
+                                        <span t-field="patient.first_name"/>
+                                        <span t-field="patient.last_name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="patient.gender"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="patient.birthday"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="patient.phone"/>
+                                    </td>
+                                    <t t-set="Lastvisit"
+                                       t-value="request.env['hr.hospital.visit'].search([('doctor_id', '=', doctor.id), ('patient_id', '=', patient.id) ], order='planned_datetime desc')"/>
+                                    <t t-if="Lastvisit">
+                                        <td t-attf-style="color: {{ ('#FFD700' if Lastvisit.status == 'planned' else '#008000' if Lastvisit.status == 'completed' else '#ff0000' )}}">
+                                            <span t-field="Lastvisit.status"/>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="position: fixed; bottom: 0; width: 100%; text-align: center; font-size: 12px;">
+                        <t t-set="DateTime"
+                           t-value="datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')"/>
+                        <p>Date of printing:
+                            <span t-esc="DateTime"/>
+                        </p>
+                        <p>City:
+                            <span t-esc="request.env.user.company_id.city"/>
+                        </p>
+                    </div>
+                </t>
+            </t>
+
+        </t>
+    </template>
+</odoo>

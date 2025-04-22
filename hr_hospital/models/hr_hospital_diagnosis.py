@@ -21,7 +21,7 @@ class Diagnosis(models.Model):
     doctor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
         compute='_compute_data',
-        domain=[('is_intern)','=',False)],
+        domain=[('is_intern)', '=', False)],
         store=True)
 
     @api.depends('visit_id')
