@@ -11,6 +11,9 @@ class HRHPerson(models.AbstractModel):
     first_name = fields.Char(required=True)
     last_name = fields.Char(required=True)
     phone = fields.Char()
+    user_id = fields.Many2one(
+        comodel_name='res.users',
+        ondelete='set null')
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),

@@ -10,12 +10,15 @@ class Disease(models.Model):
     _name = 'hr.hospital.disease'
     _description = 'Disease'
     _parent_name = "parent_id"
-    _parent_store = True
+    #_parent_store = True
     _rec_name = 'complete_name'
     _order = 'complete_name'
 
-    name = fields.Char(index='trigram', required=True)
-    description = fields.Text()
+    name = fields.Char(translate=True, help="The name of the disease.")
+    description = fields.Text(
+        translate=True,
+        help="A detailed description of the disease.")
+
     parent_id = fields.Many2one(
         comodel_name='hr.hospital.disease', string='Parent Disease',
         index=True, ondelete='cascade')

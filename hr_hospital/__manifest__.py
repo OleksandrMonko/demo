@@ -16,7 +16,9 @@
     },
 
     'data': [
+        'security/hr_hospital_groups.xml',
         'security/ir.model.access.csv',
+        'security/hr_hospital_security.xml',
         'views/hr_hospital_menu.xml',
         'data/hr_hospital_disease_data.xml',
         'views/hr_hospital_doctor_views.xml',
