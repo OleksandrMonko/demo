@@ -33,11 +33,11 @@ class HRHDoctor(models.Model):
     @api.depends('specialty_id')
     def _compute_color(self):
         for record in self:
-            if record.specialty_id == 'hr_hospital_specialty_1':
+            if record.specialty_id.id == 'hr_hospital_specialty_1':
                 record.color = '#FF0000'
-            elif record.specialty_id == 'hr_hospital_specialty_2':
+            elif record.specialty_id.id == 'hr_hospital_specialty_2':
                 record.color = '#00FF00'
-            elif record.specialty_id == 'hr_hospital_specialty_3':
+            elif record.specialty_id.id == 'hr_hospital_specialty_3':
                 record.color = '#FFD700'
             else:
                 record.color = '#FFFFFF'

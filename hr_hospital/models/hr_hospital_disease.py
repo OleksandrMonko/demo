@@ -10,7 +10,7 @@ class Disease(models.Model):
     _name = 'hr.hospital.disease'
     _description = 'Disease'
     _parent_name = "parent_id"
-    #_parent_store = True
+    # _parent_store = True
     _rec_name = 'complete_name'
     _order = 'complete_name'
 
