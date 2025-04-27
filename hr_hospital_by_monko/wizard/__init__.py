@@ -1,0 +1,2 @@
+from . import hr_hospital_set_personal_doctor_wizard
+from . import hr_hospital_disease_report_wizard

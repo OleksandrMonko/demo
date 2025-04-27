@@ -1,0 +1,60 @@
+<odoo>
+
+    <record id="hr_hospital_doctor_1" model="hr.hospital.doctor">
+        <field name="first_name">Ellen</field>
+        <field name="last_name">Pompeo</field>
+        <field name="phone">+380931111111</field>
+        <field name="gender">male</field>
+        <field name="specialty_id" ref="hr_hospital_specialty_1"/>
+        <field name="is_intern">False</field>
+        <field name="image_1920" type="base64"
+               file="hr_hospital/demo/photos/dm1.jpeg"/>
+    </record>
+
+    <record id="hr_hospital_doctor_2" model="hr.hospital.doctor">
+        <field name="first_name">Zachary</field>
+        <field name="last_name">Quinto</field>
+        <field name="phone">+380932222222</field>
+        <field name="gender">female</field>
+        <field name="specialty_id" ref="hr_hospital_specialty_2"/>
+        <field name="is_intern">True</field>
+        <field name="mentor_id" ref="hr_hospital_doctor_1"/>
+        <field name="image_1920" type="base64"
+               file="hr_hospital/demo/photos/dw1.jpeg"/>
+    </record>
+
+    <record id="hr_hospital_doctor_3" model="hr.hospital.doctor">
+        <field name="first_name">Ming-Na</field>
+        <field name="last_name">Wen</field>
+        <field name="phone">+380933333333</field>
+        <field name="gender">male</field>
+        <field name="specialty_id" ref="hr_hospital_specialty_1"/>
+        <field name="is_intern">True</field>
+        <field name="mentor_id" ref="hr_hospital_doctor_1"/>
+        <field name="image_1920" type="base64"
+               file="hr_hospital/demo/photos/dm2.jpeg"/>
+    </record>
+
+    <record id="hr_hospital_doctor_4" model="hr.hospital.doctor">
+        <field name="first_name">Joshua</field>
+        <field name="last_name">Jackson</field>
+        <field name="phone">+380934444444</field>
+        <field name="gender">female</field>
+        <field name="specialty_id" ref="hr_hospital_specialty_2"/>
+        <field name="is_intern">False</field>
+        <field name="image_1920" type="base64"
+               file="hr_hospital/demo/photos/dw2.jpeg"/>
+    </record>
+
+    <record id="hr_hospital_doctor_5" model="hr.hospital.doctor">
+        <field name="first_name">Sam</field>
+        <field name="last_name">Wilson</field>
+        <field name="phone">+380935555555</field>
+        <field name="gender">male</field>
+        <field name="specialty_id" ref="hr_hospital_specialty_1"/>
+        <field name="is_intern">False</field>
+        <field name="image_1920" type="base64"
+               file="hr_hospital/demo/photos/dm3.jpeg"/>
+    </record>
+
+</odoo>
