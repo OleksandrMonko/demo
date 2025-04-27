@@ -13,7 +13,8 @@ class HRHPerson(models.AbstractModel):
     phone = fields.Char()
     user_id = fields.Many2one(
         comodel_name='res.users',
-        ondelete='set null')
+        ondelete='set null',
+        default=lambda self: self.env.user)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),

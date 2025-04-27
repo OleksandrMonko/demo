@@ -1,11 +1,11 @@
 {
-    'name': 'HR Hospital',
-    'summary': '',
+    'name': 'HR Hospital by Oleksandr Monko',
+    'summary': 'Hospital Management System by Oleksandr Monko',
     'author': 'Oleksandr Monko',
     'website': 'https://odoo.school/',
     'category': 'Customizations',
     'license': 'OPL-1',
-    'version': '17.0.2.3.0',
+    'version': '17.0.1.1.1',
 
     'depends': [
         'base',
@@ -45,5 +45,5 @@
 
     'installable': True,
     'auto_install': False,
-
+    'i18n': True,
 }

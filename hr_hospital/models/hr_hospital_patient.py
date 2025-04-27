@@ -58,3 +58,9 @@ class HRHPatient(models.Model):
                 'default_patient_id': self.id,
             },
         }
+
+    # @api.model
+    # def create(self, vals):
+    #    if 'user_id' not in vals:
+    #        vals['user_id'] = self.env.user.id
+    #    return super(HRHPatient, self).create(vals)

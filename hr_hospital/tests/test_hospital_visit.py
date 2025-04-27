@@ -30,7 +30,7 @@ class TestHospitalVisit(TransactionCase):
         })
         # Спроба змінити час або лікаря для візиту зі статусом "done"
         with self.assertRaises(ValidationError):
-           visit.write({'planned_datetime': datetime(2025, 4, 23, 11, 0)})
+            visit.write({'planned_datetime': datetime(2025, 4, 23, 11, 0)})
 
     def test_check_patient_doctor_schedule(self):
         # Створення першого візиту
