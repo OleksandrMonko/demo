@@ -1,0 +1,148 @@
+<odoo>
+
+    <record id="hr_hospital_patient_tree" model="ir.ui.view">
+        <field name="name">hr.hospital.patient.tree ()</field>
+        <field name="model">hr.hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <header>
+                    <button name="%(hr_hospital.hr_hospital_set_personal_doctor_wizard_act_window)d"
+                            string="Set personal doctor"
+                            type="action"/>
+                </header>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="personal_doctor_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_hospital_patient_form" model="ir.ui.view">
+        <!--<field name="name">hr.hospital.patient.form ()</field>
+        <field name="model">hr.hospital.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="%(hr_hospital.hr_hospital_set_personal_doctor_wizard_act_window)d"
+                            string="Set personal doctor" type="action"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="gender"/>
+                            <field name="birthday"/>
+                            <field name="age" readonly="1"/>
+                            <field name="passport_id"/>
+                            <field name="phone"/>
+                            <field name="contact_person"/>
+                            <field name="personal_doctor_id"/>
+                        </group>
+                        <group>
+                            <field name="image_1920" widget="image"
+                                   style="max-height:100px;"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>-->
+
+        <field name="name">hr.hospital.patient.form ()</field>
+        <field name="model">hr.hospital.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="%(hr_hospital.hr_hospital_set_personal_doctor_wizard_act_window)d"
+                            string="Set personal doctor" type="action"/>
+                    <button name="action_open_visits" string="Visit History"
+                            type="object" class="oe_highlight"/>
+                    <button name="action_create_visit" string="Create Visit"
+                            type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" class="oe_inline"/>
+                        </h1>
+                    </div>
+                    <newline/>
+                    <group>
+                        <group>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="user_id"/>
+                            <separator/>
+                            <field name="birthday"/>
+                            <field name="age"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="image_1920" widget="image"
+                                       style="max-height:90px;"/>
+                            </group>
+                            <separator/>
+                            <group>
+                                <field name="gender" widget='radio'/>
+                            </group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Doctor Data">
+                            <group>
+                                <field name="personal_doctor_id"/>
+                                <field name="description"/>
+                            </group>
+                        </page>
+                        <page string="Personal Data">
+                            <group>
+                                <field name="passport_id"/>
+                                <field name="phone"/>
+                                <field name="contact_person"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+
+    </record>
+
+    <record id="hr_hospital_patient_search" model="ir.ui.view">
+        <field name="name">hr.hospital.patient.search (hr_hospital_patient)
+        </field>
+        <field name="model">hr.hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string="Filters">
+                <field name="name"/>
+                <field name="last_name"/>
+                <field name="first_name"/>
+                <field name="phone"/>
+                <group expand="0" string="Group By">
+                    <filter string="Doctor" name="status" domain="[]"
+                            context="{'group_by':'personal_doctor_id'}"/>
+                </group>
+
+                <searchpanel>
+                    <field name="personal_doctor_id" string="Filter by Doctors"
+                           icon="fa-users" select="multi"
+                           enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_hr_hospital_patient_window"
+            model="ir.actions.act_window">
+        <field name="name">Patient</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.hospital.patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="hr_hospital_menu_patient"
+              action="action_hr_hospital_patient_window"
+              parent="hr_hospital_main_menu"
+              name="Patient" sequence="200"/>
+
+</odoo>
