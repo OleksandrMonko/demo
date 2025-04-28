@@ -1,6 +1,6 @@
 {
     'name': 'HR Hospital by Oleksandr Monko',
-    'summary': 'Hospital Management System by Oleksandr Monko',
+    'summary': 'Hospital Management System by Oleksandr Monko (designing)',
     'author': 'Oleksandr Monko',
     'website': 'https://odoo.school/',
     'category': 'Customizations',
